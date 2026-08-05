@@ -5,16 +5,14 @@
    No se realiza ninguna petición a servidores externos.
    =========================================================== */
 
-var CACHE_NAME = "cordero-f-cache-v1";
+var CACHE_NAME = "cordero-f-cache-v2";
 var ASSETS = [
   "./",
   "./index.html",
   "./style.css",
   "./app.js",
   "./manifest.json",
-  "./icons/icon-192.png",
-  "./icons/icon-512.png",
-  "./icons/apple-touch-icon.png"
+  "./icons/icon.svg"
 ];
 
 self.addEventListener("install", function (event) {
