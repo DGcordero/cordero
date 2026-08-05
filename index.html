@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cordero F — Gestión de Misiones</title>
+<meta name="description" content="Gestor de tareas personales offline, sin APIs externas, con identidad táctica.">
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#3C3F26">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Cordero F">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="header">
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-badge">CF</div>
+        <div class="brand-text">
+          <h1>Cordero F</h1>
+          <p class="subtitle">Centro de mando de tareas</p>
+        </div>
+      </div>
+      <button id="installBtn" class="install-btn">⬇ Instalar</button>
+    </div>
+    <span class="offline-pill"><span class="dot"></span> Operativo sin conexión</span>
+
+    <div class="sitrep" id="sitrep"></div>
+  </header>
+
+  <section class="new-mission">
+    <button class="new-mission-toggle" id="toggleForm">
+      <span>+ Nueva misión</span>
+      <span class="plus" id="toggleIcon">＋</span>
+    </button>
+    <form class="new-mission-body" id="taskForm">
+      <div class="field">
+        <label for="title">Objetivo</label>
+        <input type="text" id="title" placeholder="Ej. Entregar informe semanal" required maxlength="80">
+      </div>
+      <div class="field">
+        <label for="desc">Notas de la misión</label>
+        <textarea id="desc" placeholder="Detalles, contexto, recursos necesarios..." maxlength="300"></textarea>
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="category">Unidad / categoría</label>
+          <input type="text" id="category" placeholder="Ej. Casa, Trabajo" maxlength="30">
+        </div>
+        <div class="field">
+          <label for="due">Plazo límite</label>
+          <input type="date" id="due">
+        </div>
+      </div>
+      <div class="field">
+        <label>Nivel de prioridad</label>
+        <div class="priority-picker" id="priorityPicker">
+          <div class="priority-opt" data-p="critica">Crítica</div>
+          <div class="priority-opt active" data-p="tactica">Táctica</div>
+          <div class="priority-opt" data-p="rutina">Rutina</div>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Desplegar misión</button>
+    </form>
+  </section>
+
+  <div class="section-label">Órdenes activas</div>
+
+  <div class="filters" id="filters">
+    <div class="filter-chip active" data-filter="todas">Todas</div>
+    <div class="filter-chip" data-filter="pendiente">Pendientes</div>
+    <div class="filter-chip" data-filter="en_curso">En curso</div>
+    <div class="filter-chip" data-filter="cumplida">Cumplidas</div>
+    <div class="filter-chip" data-filter="critica">Crítica</div>
+    <div class="filter-chip" data-filter="tactica">Táctica</div>
+    <div class="filter-chip" data-filter="rutina">Rutina</div>
+  </div>
+
+  <div class="task-list" id="taskList"></div>
+
+  <p class="footer-note">Cordero F · datos almacenados solo en este dispositivo<br>Cero conexiones salientes · cero APIs externas</p>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
